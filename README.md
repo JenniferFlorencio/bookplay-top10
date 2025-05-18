@@ -1,120 +1,89 @@
-# bookplay-top10
-Uma página web para listar os top 10 títulos mais acessados do Bookplay.
-
-No desafio da Bookplay, utilizei meus conhecimentos atuais em HTML, CSS e JavaScript para desenvolver o site, pois são as tecnologias que consigo aplicar com mais segurança no momento, atuando como iniciante.
-
-No html trabalhei de forma simples:
-
-Esse código é a estrutura básica da minha página web que mostra os 10 títulos mais acessados do Bookplay. Vou explicar parte por parte:
-
-<!DOCTYPE html> — Isso aqui diz para o navegador que esse arquivo é um documento HTML, pra ele entender como interpretar o conteúdo.
-
-<html lang="en"> — Essa tag abre o código HTML inteiro e define que o idioma da página é inglês (mesmo eu falando português, deixei assim, mas poderia ser "pt-BR").
-
-<head> — Aqui dentro ficam informações importantes que não aparecem direto na página, tipo o título que aparece na aba do navegador, o conjunto de caracteres para usar (UTF-8) e links para o CSS (que é o estilo da página) e para a biblioteca de ícones Font Awesome, que eu uso para os ícones das redes sociais no rodapé.
-
-<title>Top 10 titulo mais acessados</title> — Esse é o título da aba que aparece no navegador.
-
-<body> — Aqui dentro fica tudo que o usuário vê na página.
-
-<header class="conteudo-topo"> — Essa é a parte do topo da página, que tem o logo do Bookplay. Usei uma tag <a> com link vazio (acho que poderia ser para a home), e dentro dela tem a imagem do logo.
-
-<section class="banner"> — Essa seção tem um título grande “Top 10 títulos mais acessados” e um texto explicando que são os conteúdos mais acessados, com um emoji de coração azul para dar um toque legal.
-
-<main id="lista-titulos"> — Esse é o lugar onde vão aparecer os 10 títulos que eu busco pela API usando JavaScript. Por isso, ele está vazio aqui no HTML, porque os dados vão ser colocados depois pelo script.
-
-<footer class="rodape"> — Essa parte é o rodapé da página, que fica no final. Dentro tem três coisas:
-
-links-rodape: com links para Ajuda, Termos de uso e Políticas (todos com #, que são links vazios, mas poderiam direcionar para outras páginas).
-
-icones-sociais: que mostra os ícones clicáveis para Instagram e Facebook do Bookplay, usando os ícones da Font Awesome.
-
-Textos com informações da empresa, como nome, CNPJ e endereço.
-
-No final do body, eu linkei o arquivo script.js, que é onde está o código JavaScript que faz a mágica de buscar os dados e mostrar na tela.
+bookplay-top10
+Uma página web para listar os 10 títulos mais acessados do Bookplay.
 
 
+Sobre o desenvolvimento
+No desafio da Bookplay, utilizei meus conhecimentos atuais em HTML, CSS e JavaScript para desenvolver este site, pois são as tecnologias que consigo aplicar com mais segurança no momento, atuando como iniciante.
 
-No css trabelhei da seguinte forma:
+Estrutura do HTML
 
-Esse arquivo CSS é o que deixa minha página bonita e organizada, controlando cores, espaçamentos, fontes e o posicionamento dos elementos. Vou explicar cada parte:
+O código HTML segue uma estrutura básica, mas organizada, que explica o funcionamento da página:
 
-:root { ... }
-Aqui eu criei umas variáveis de cor para usar em todo o site. Isso facilita muito, porque se eu quiser mudar uma cor, só troco aqui e muda em todos os lugares. Por exemplo, --cor-bookplay é um azul, e o fundo da página é um azul clarinho.
+<!DOCTYPE html>: Indica ao navegador que o arquivo é um documento HTML5, para interpretar corretamente o conteúdo.
 
-html, body { height: 100%; margin: 0; }
-Deixei o html e o body com altura total da tela e tirei as margens padrão que o navegador coloca, para garantir que tudo fique bem alinhado e ocupe toda a altura.
+<html lang="en">: Abre o documento HTML e define o idioma da página como inglês (poderia ser "pt-BR" para português).
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-Isso aqui serve para "resetar" margens e espaçamentos padrões de todos os elementos (* significa tudo) e deixar o cálculo de tamanho mais fácil com box-sizing: border-box. Também coloquei uma fonte bonita e legível chamada "Segoe UI" para usar em toda a página.
+<head>: Contém informações importantes que não aparecem diretamente na página, como o título da aba, o conjunto de caracteres (UTF-8), e os links para o arquivo CSS e para a biblioteca de ícones Font Awesome, usada para os ícones das redes sociais no rodapé.
 
-body { ... }
-O corpo da página tem um fundo clarinho, cor do texto escura para facilitar a leitura, e um layout em coluna (flex-direction: column) para organizar header, main e footer verticalmente. min-height: 100vh faz com que o corpo ocupe pelo menos toda a altura da tela, o que ajuda para o rodapé ficar no final mesmo com pouco conteúdo.
+<title>: Define o título que aparece na aba do navegador.
 
-header { ... }
-O cabeçalho tem o texto centralizado, um fundo azul forte (a cor do Bookplay), texto branco para contraste, cantos arredondados e uma sombra suave para dar profundidade. Também tem uma margem embaixo para separar do conteúdo.
+<body>: Contém todo o conteúdo visível para o usuário.
 
-main { ... }
-A área principal usa flex: 1 para crescer e ocupar todo o espaço disponível entre o header e o footer. O conteúdo dentro é um grid que adapta a quantidade de colunas conforme o tamanho da tela, com colunas que têm no mínimo 1 fração do espaço (aqui tem um pequeno erro que pode corrigir depois). Também tem espaçamento entre os cards e um pouco de padding nas laterais.
+<header class="conteudo-topo">: Seção do topo com o logo do Bookplay. Usei uma tag <a> com link vazio, que poderia ser direcionado para a página inicial, contendo a imagem do logo.
 
-.banner { ... }
-O banner é aquele destaque no topo do conteúdo, com cor azul do Bookplay, centralizado, com bastante espaçamento e cantos arredondados. Também tem uma sombra e uma animação que faz ele aparecer suavemente de cima para baixo.
+<section class="banner">: Exibe um título grande "Top 10 títulos mais acessados" e um texto explicativo, com um emoji para dar um toque visual.
 
-@keyframes fadeIn { ... }
-Essa animação faz o banner aparecer devagar, começando transparente e um pouco para cima, e depois ficando opaco e na posição certa.
+<main id="lista-titulos">: Local onde os 10 títulos são inseridos dinamicamente via JavaScript após buscar os dados na API.
 
-.card { ... }
-Cada card (cada título da lista) tem fundo branco, cantos arredondados, padding para não grudar o texto nas bordas, sombra suave e margem entre eles. Quando passo o mouse, ele aumenta um pouco para dar um efeito legal.
+<footer class="rodape">: Rodapé com links (Ajuda, Termos de Uso, Políticas), ícones sociais do Bookplay (Instagram e Facebook), e informações da empresa (nome, CNPJ, endereço).
 
-.card h2 { ... }
-O título do card é um pouco maior, tem uma margem embaixo para separar do texto e usa a cor azul do Bookplay para destacar.
+Ao final do <body>, o arquivo script.js é linkado, onde está o código JavaScript responsável pela busca dos dados e exibição dos títulos.
 
-.card p { ... }
-O parágrafo do card é menor e com uma cor cinza para não brigar com o título.
 
-footer { ... }
-O rodapé tem texto centralizado, fundo azul escuro, texto branco, um padding maior para dar espaço e uma margem em cima para afastar do conteúdo. Ele fica sempre visível no final da página.
+Organização do CSS
 
-.conteudo-rodape a { ... }
-Os links do rodapé são brancos, com espaço entre eles, sem sublinhado e em negrito para chamar atenção.
 
-.conteudo-rodape p { ... }
-Os parágrafos do rodapé também são brancos e têm margem para não ficarem colados.
+O arquivo CSS é responsável por deixar a página visualmente agradável e organizada, controlando cores, espaçamentos, fontes e posicionamento:
 
-.icones-sociais { ... }
-A área dos ícones sociais tem uma margem para separar do texto.
+:root { ... }: Define variáveis CSS para as cores usadas no site, facilitando alterações globais.
 
-.icones-sociais a { ... }
-Os links dos ícones são brancos, com espaçamento e um tamanho maior para os ícones, além de uma transição suave quando mudam de cor (se você quiser depois colocar um efeito de hover).
+html, body { height: 100%; margin: 0; }: Garante que o conteúdo ocupe toda a altura da tela e remove margens padrão do navegador.
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }: Reseta margens e espaçamentos, define box-sizing para facilitar cálculo de tamanhos e aplica fonte legível para toda a página.
+
+body { ... }: Define fundo claro, cor do texto escura, layout flex vertical para organizar header, main e footer, e garante altura mínima da tela.
+
+header { ... }: Estiliza o topo com fundo azul, texto branco, cantos arredondados e sombra para profundidade, além de margem inferior.
+
+main { ... }: Usa flex para ocupar espaço disponível e CSS Grid para organizar os cards responsivamente, com espaçamento e padding.
+
+.banner { ... }: Estiliza o destaque no topo do conteúdo com cor azul, centralização, espaçamento, cantos arredondados, sombra e animação de fade-in.
+
+@keyframes fadeIn { ... }: Animação que faz o banner aparecer suavemente.
+
+.card { ... }: Estilo dos cards com fundo branco, cantos arredondados, padding, sombra e efeito hover que aumenta o card levemente.
+
+.card h2 { ... } e .card p { ... }: Estilizam título e parágrafo do card com cores e espaçamentos adequados.
+
+footer { ... }: Rodapé com fundo azul escuro, texto branco, padding confortável e margem superior para separar do conteúdo.
+
+.conteudo-rodape a { ... }: Links no rodapé são brancos, espaçados e em negrito.
+
+.conteudo-rodape p { ... }: Parágrafos do rodapé com cor branca e margens.
+
+.icones-sociais { ... } e .icones-sociais a { ... }: Área dos ícones sociais com espaçamento e transições suaves.
 
 
 
+Funcionamento do JavaScript
 
 
+O código JavaScript tem a função de buscar os 10 títulos mais acessados da API e exibi-los na página de forma dinâmica:
 
+Carregamento seguro: Uso do evento DOMContentLoaded para garantir que o código só rode após todo o HTML estar carregado, evitando erros ao manipular elementos ainda não existentes.
 
-No javaScript fiz da seguinte forma:
+Seleção do elemento: Pego o elemento com id="lista-titulos" para inserir os títulos.
 
- código serve para mostrar na página os 10 títulos mais acessados, pegando esses dados direto de uma API. A ideia é que, quando a página carregar, ele já busque essas informações e mostre para a gente.
+Indicador de carregamento: Antes de buscar os dados, insiro o texto “Carregando dados...” para informar o usuário que a página está processando.
 
-Primeiro, eu usei o evento DOMContentLoaded para garantir que o código só rode depois que toda a página estiver carregada. Assim, não dá erro porque o script tenta mexer em coisas que ainda não existem.
+Requisição à API: Uso fetch para fazer uma requisição GET para a API da Bookplay, que retorna os dados em formato JSON.
 
-Depois, peguei o elemento da página onde quero mostrar esses títulos, usando o getElementById.
+Tratamento de resposta: Verifico se a resposta está ok (status HTTP 200). Caso contrário, lanço um erro.
 
-Antes de buscar os dados, coloquei um texto dizendo “Carregando dados...” para o usuário saber que a página está trabalhando e não parece travada.
+Processamento dos dados: Ao receber os dados, removo o texto de carregamento e verifico se o formato dos dados está correto.
 
-Para buscar os dados, usei o fetch, que é uma forma moderna de fazer requisições para um endereço na internet. O fetch traz uma promessa de que vai entregar esses dados, e com o .then eu trato a resposta.
+Exibição dos títulos: Para cada título recebido, crio um card na página com o número, nome e código do livro, aplicando o estilo definido no CSS.
 
-No primeiro .then, verifico se deu tudo certo (se o servidor respondeu ok). Se não der, eu crio um erro para mostrar que algo não funcionou.
+Tratamento de erros: Caso ocorra algum problema na requisição, exibo uma mensagem de erro clara para o usuário.
 
-Depois, pego os dados em formato JSON para poder trabalhar com eles em JavaScript.
-
-No segundo .then, quando os dados chegam, eu tiro o texto de “Carregando...” e verifico se os dados estão no formato que eu espero (com as propriedades certas).
-
-Se estiver tudo certo, chamo a função exibirTitulos, que cria na página um cartão para cada título, com o número, o nome e o código do livro.
-
-Se acontecer algum erro, o .catch vai mostrar uma mensagem de erro para o usuário, para ele saber que não deu para carregar os dados.
-
-A função exibirTitulos percorre todos os títulos e cria um elemento na página para mostrar cada um, usando um cartão bonito com estilo.
-
-Então, o que esse código faz é deixar a página mais dinâmica, puxando dados reais da internet, mostrando que a gente se preocupa em avisar o usuário enquanto carrega e também em avisar caso algo dê errado. É uma forma legal de deixar o site mais moderno e interativo!
+Este processo deixa a página dinâmica, moderna e interativa, além de melhorar a experiência do usuário ao informar o estado da aplicação (carregando ou erro).
