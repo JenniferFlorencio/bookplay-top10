@@ -90,6 +90,9 @@ Os links dos ícones são brancos, com espaçamento e um tamanho maior para os �
 
 
 
+
+
+
 No javaScript fiz da seguinte forma:
 
  código serve para mostrar na página os 10 títulos mais acessados, pegando esses dados direto de uma API. A ideia é que, quando a página carregar, ele já busque essas informações e mostre para a gente.
